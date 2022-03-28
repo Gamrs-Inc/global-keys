@@ -16,7 +16,7 @@ export class KeyStream extends EventEmitter {
               return  this.emit('data', JSON.parse(parsed))
              }
              catch{}
-    }));
+    });
     keysProcess.on('close', () => this.emit('error', new Error(`unexpected closure of keys.exe process`)));
   }
 }
