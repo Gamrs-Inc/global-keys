@@ -10,7 +10,13 @@ export class KeyStream extends EventEmitter {
 
     const keysProcess = child_process.spawn(`${path.join(__dirname, '../bin/keys.exe')}`);
 
-    keysProcess.stdout.on('data', (data: any) => this.emit('data', JSON.parse(data)));
+    keysProcess.stdout.on('data', (data: any) => {
+            try{ 
+              const parsed = JSON.parse(data)
+              return  this.emit('data', JSON.parse(parsed))
+             }
+             catch{}
+    }));
     keysProcess.on('close', () => this.emit('error', new Error(`unexpected closure of keys.exe process`)));
   }
 }
