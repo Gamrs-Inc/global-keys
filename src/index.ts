@@ -13,7 +13,7 @@ export class KeyStream extends EventEmitter {
     keysProcess.stdout.on('data', (data: any) => {
             try{ 
               const parsed = JSON.parse(data)
-              return  this.emit('data', JSON.parse(parsed))
+              return  this.emit('data', parsed)
              }
              catch{}
     });
