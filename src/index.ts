@@ -8,7 +8,7 @@ export class KeyStream extends EventEmitter {
   constructor() {
     super();
 
-    const keysProcess = child_process.spawn(`${path.join(__dirname, '../bin/keys.exe')}`);
+    const keysProcess = child_process.spawn(`${path.join(__dirname, '../bin/keys.exe').replace('app.asar', 'app.asar.unpacked')}`);
 
     keysProcess.stdout.on('data', (data: any) => {
             try{ 
